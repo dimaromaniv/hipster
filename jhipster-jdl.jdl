@@ -1,0 +1,29 @@
+application {
+  config {
+    baseName RainChecker,
+    packageName com.mycompany.myapp,
+    applicationType monolith,
+    prodDatabaseType mysql,
+  }
+  entities *
+}
+
+entity WeatherResponse{
+	cloudyPercent Double,
+	tempLevel Double ,
+	humidity Double,
+    forecastForNextHours Double,
+    rainCounter Integer,
+    status String
+}
+
+
+
+
+// Use Data Transfer Objects (DTO)
+// dto * with mapstruct
+
+// Set service options to all except few
+
+// Set an angular suffix
+// angularSuffix * with mySuffix
