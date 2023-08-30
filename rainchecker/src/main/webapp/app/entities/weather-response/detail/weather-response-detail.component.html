@@ -1,0 +1,54 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="weatherResponse">
+      <h2 data-cy="weatherResponseDetailsHeading">
+        <span jhiTranslate="rainCheckerApp.weatherResponse.detail.title">Weather Response</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ weatherResponse.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="rainCheckerApp.weatherResponse.cloudyPercent">Cloudy Percent</span></dt>
+        <dd>
+          <span>{{ weatherResponse.cloudyPercent }}</span>
+        </dd>
+        <dt><span jhiTranslate="rainCheckerApp.weatherResponse.tempLevel">Temp Level</span></dt>
+        <dd>
+          <span>{{ weatherResponse.tempLevel }}</span>
+        </dd>
+        <dt><span jhiTranslate="rainCheckerApp.weatherResponse.humidity">Humidity</span></dt>
+        <dd>
+          <span>{{ weatherResponse.humidity }}</span>
+        </dd>
+        <dt><span jhiTranslate="rainCheckerApp.weatherResponse.forecastForNextHours">Forecast For Next Hours</span></dt>
+        <dd>
+          <span>{{ weatherResponse.forecastForNextHours }}</span>
+        </dd>
+        <dt><span jhiTranslate="rainCheckerApp.weatherResponse.rainCounter">Rain Counter</span></dt>
+        <dd>
+          <span>{{ weatherResponse.rainCounter }}</span>
+        </dd>
+        <dt><span jhiTranslate="rainCheckerApp.weatherResponse.status">Status</span></dt>
+        <dd>
+          <span>{{ weatherResponse.status }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/weather-response', weatherResponse.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

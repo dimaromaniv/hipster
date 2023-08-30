@@ -1,0 +1,123 @@
+<div>
+  <h2 id="page-heading" data-cy="WeatherResponseHeading">
+    <span jhiTranslate="rainCheckerApp.weatherResponse.home.title">Weather Responses</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="rainCheckerApp.weatherResponse.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-weather-response"
+        [routerLink]="['/weather-response/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="rainCheckerApp.weatherResponse.home.createLabel"> Create a new Weather Response </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="weatherResponses?.length === 0">
+    <span jhiTranslate="rainCheckerApp.weatherResponse.home.notFound">No Weather Responses found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="weatherResponses && weatherResponses.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="cloudyPercent">
+            <div class="d-flex">
+              <span jhiTranslate="rainCheckerApp.weatherResponse.cloudyPercent">Cloudy Percent</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="tempLevel">
+            <div class="d-flex">
+              <span jhiTranslate="rainCheckerApp.weatherResponse.tempLevel">Temp Level</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="humidity">
+            <div class="d-flex">
+              <span jhiTranslate="rainCheckerApp.weatherResponse.humidity">Humidity</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="forecastForNextHours">
+            <div class="d-flex">
+              <span jhiTranslate="rainCheckerApp.weatherResponse.forecastForNextHours">Forecast For Next Hours</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="rainCounter">
+            <div class="d-flex">
+              <span jhiTranslate="rainCheckerApp.weatherResponse.rainCounter">Rain Counter</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="status">
+            <div class="d-flex">
+              <span jhiTranslate="rainCheckerApp.weatherResponse.status">Status</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let weatherResponse of weatherResponses; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/weather-response', weatherResponse.id, 'view']">{{ weatherResponse.id }}</a>
+          </td>
+          <td>{{ weatherResponse.cloudyPercent }}</td>
+          <td>{{ weatherResponse.tempLevel }}</td>
+          <td>{{ weatherResponse.humidity }}</td>
+          <td>{{ weatherResponse.forecastForNextHours }}</td>
+          <td>{{ weatherResponse.rainCounter }}</td>
+          <td>{{ weatherResponse.status }}</td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/weather-response', weatherResponse.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/weather-response', weatherResponse.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(weatherResponse)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

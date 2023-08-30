@@ -1,0 +1,40 @@
+{
+  "applications": ["RainChecker"],
+  "changelogDate": "20230830010700",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "weather_response",
+  "fields": [
+    {
+      "fieldName": "cloudyPercent",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "tempLevel",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "humidity",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "forecastForNextHours",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "rainCounter",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "WeatherResponse",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "service": "no"
+}

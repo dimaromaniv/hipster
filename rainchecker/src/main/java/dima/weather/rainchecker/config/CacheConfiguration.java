@@ -48,6 +48,7 @@ public class CacheConfiguration {
             createCache(cm, dima.weather.rainchecker.domain.User.class.getName());
             createCache(cm, dima.weather.rainchecker.domain.Authority.class.getName());
             createCache(cm, dima.weather.rainchecker.domain.User.class.getName() + ".authorities");
+            createCache(cm, dima.weather.rainchecker.domain.WeatherResponse.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

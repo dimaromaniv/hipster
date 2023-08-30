@@ -1,0 +1,93 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-weather-response-heading"
+        data-cy="WeatherResponseCreateUpdateHeading"
+        jhiTranslate="rainCheckerApp.weatherResponse.home.createOrEditLabel"
+      >
+        Create or edit a Weather Response
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="rainCheckerApp.weatherResponse.cloudyPercent" for="field_cloudyPercent"
+            >Cloudy Percent</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="cloudyPercent"
+            id="field_cloudyPercent"
+            data-cy="cloudyPercent"
+            formControlName="cloudyPercent"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="rainCheckerApp.weatherResponse.tempLevel" for="field_tempLevel">Temp Level</label>
+          <input type="number" class="form-control" name="tempLevel" id="field_tempLevel" data-cy="tempLevel" formControlName="tempLevel" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="rainCheckerApp.weatherResponse.humidity" for="field_humidity">Humidity</label>
+          <input type="number" class="form-control" name="humidity" id="field_humidity" data-cy="humidity" formControlName="humidity" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="rainCheckerApp.weatherResponse.forecastForNextHours" for="field_forecastForNextHours"
+            >Forecast For Next Hours</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="forecastForNextHours"
+            id="field_forecastForNextHours"
+            data-cy="forecastForNextHours"
+            formControlName="forecastForNextHours"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="rainCheckerApp.weatherResponse.rainCounter" for="field_rainCounter">Rain Counter</label>
+          <input
+            type="number"
+            class="form-control"
+            name="rainCounter"
+            id="field_rainCounter"
+            data-cy="rainCounter"
+            formControlName="rainCounter"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="rainCheckerApp.weatherResponse.status" for="field_status">Status</label>
+          <input type="text" class="form-control" name="status" id="field_status" data-cy="status" formControlName="status" />
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

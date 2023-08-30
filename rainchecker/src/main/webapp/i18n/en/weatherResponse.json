@@ -1,0 +1,29 @@
+{
+  "rainCheckerApp": {
+    "weatherResponse": {
+      "home": {
+        "title": "Weather Responses",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Weather Response",
+        "createOrEditLabel": "Create or edit a Weather Response",
+        "notFound": "No Weather Responses found"
+      },
+      "created": "A new Weather Response is created with identifier {{ param }}",
+      "updated": "A Weather Response is updated with identifier {{ param }}",
+      "deleted": "A Weather Response is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Weather Response {{ id }}?"
+      },
+      "detail": {
+        "title": "Weather Response"
+      },
+      "id": "ID",
+      "cloudyPercent": "Cloudy Percent",
+      "tempLevel": "Temp Level",
+      "humidity": "Humidity",
+      "forecastForNextHours": "Forecast For Next Hours",
+      "rainCounter": "Rain Counter",
+      "status": "Status"
+    }
+  }
+}
